@@ -10,6 +10,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Add this to ensure proper permissions
 
     steps:
     - name: Check out repository
@@ -35,5 +37,4 @@ jobs:
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         ghp-import -n -f pythonnotebook/_build/html
-        git push https://$GH_PAT@github.com/${{ github.repository }} gh-pages --force
-
+        git push "https://x-access-token:$GH_PAT@github.com/${{ github.repository }}.git" gh-pages --force
