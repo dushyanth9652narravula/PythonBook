@@ -24,8 +24,8 @@ jobs:
 
     - name: Build Jupyter Book
       run: |
-        jupyter-book build .
+        jupyter-book build pythonnotebook
 
     - name: Deploy to GitHub Pages
       run: |
-        ghp-import -n -p -f _build/html
+        ghp-import -n -p -f pythonnotebook/_build/html
