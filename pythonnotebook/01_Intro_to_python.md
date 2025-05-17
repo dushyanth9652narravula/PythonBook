@@ -6,4 +6,4 @@
 
 - In Python we have so many concepts. These are the main concepts in python.
 
-  - [Variables and Memory](02_Variables_and_Memory.ipynb)
+  - [Variables and Memory](02_Variables_and_Memory)
