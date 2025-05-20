@@ -5,3 +5,12 @@ format: jb-book
 root: 01_Intro_to_python
 chapters:
 - file: 02_Variables_and_Memory
+
+- header: Numerical Data Types
+
+  chapters:
+
+    - file: 03_Numerical_Types/01_Integers
+    - file: 03_Numerical_Types/02_Rationals
+    - file: 03_Numerical_Types/03_Decimals
+    - file: 03_Numerical_Types/04_Booleans
