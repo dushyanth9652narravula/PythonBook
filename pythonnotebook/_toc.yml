@@ -10,7 +10,7 @@ chapters:
 
   chapters:
 
-    - file: 03_Numerical_Types/01_Integers
-    - file: 03_Numerical_Types/02_Rationals
-    - file: 03_Numerical_Types/03_Decimals
-    - file: 03_Numerical_Types/04_Booleans
+    - file: 03_Numerical_Types\01_Integers.ipynb
+    - file: 03_Numerical_Types\02_Rationals
+    - file: 03_Numerical_Types\03_Decimals
+    - file: 03_Numerical_Types\04_Booleans
