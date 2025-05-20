@@ -6,7 +6,7 @@ root: 01_Intro_to_python
 
 chapters:
   - file: 02_Variables_and_Memory
-  - header: Numerical Data Types
+  - title: Numerical Data Types
     sections:
       - file: 03_Numerical_Types/01_Integers
       - file: 03_Numerical_Types/02_Rationals
