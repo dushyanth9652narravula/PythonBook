@@ -13,4 +13,7 @@ chapters:
       - file: 04_Numerical_Types/02_Rationals
       - file: 04_Numerical_Types/03_Decimals
       - file: 04_Numerical_Types/04_Booleans
+  - file: 06_First_Class_Functions/01_Introduction_to_First_Class_Functions
+    sections:
+      - file: 06_First_Class_Functions/02_Docstrings_And_Annotations
 
