@@ -16,4 +16,5 @@ chapters:
   - file: 06_First_Class_Functions/01_Introduction_to_First_Class_Functions
     sections:
       - file: 06_First_Class_Functions/02_DocStrings_And_Annotations
+      - file: 06_First_Class_Functions/03_Lambda_Functions
 
