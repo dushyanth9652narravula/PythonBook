@@ -20,4 +20,5 @@ chapters:
       - file: 06_First_Class_Functions/04_Lambda_Functions
       - file: 06_First_Class_Functions/05_Callables
       - file: 06_First_Class_Functions/06_Higher_Order_Functions
+      - file: 06_First_Class_Functions/07_Reducing_Functions
 
