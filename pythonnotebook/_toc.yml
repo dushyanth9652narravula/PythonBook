@@ -23,4 +23,5 @@ chapters:
       - file: 06_First_Class_Functions/07_Reducing_Functions
       - file: 06_First_Class_Functions/08_Partial_Functions
   - file: 07_Scopes
+  - file: 08_Closures
 
