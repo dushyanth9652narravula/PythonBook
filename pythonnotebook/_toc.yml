@@ -25,4 +25,5 @@ chapters:
   - file: 07_Scopes
   - file: 08_Closures
   - file: 09_Decorators
+  - file: 10_Modules
 
