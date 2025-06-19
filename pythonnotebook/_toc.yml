@@ -26,4 +26,5 @@ chapters:
   - file: 08_Closures
   - file: 09_Decorators
   - file: 10_Modules
+  - file: 11_Packages/packages
 
