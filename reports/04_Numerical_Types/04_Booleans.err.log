@@ -1,0 +1,59 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.17/x64/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.17/x64/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.10.17/x64/lib/python3.10/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.10.17/x64/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+  File "/opt/hostedtoolcache/Python/3.10.17/x64/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.10.17/x64/lib/python3.10/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.10.17/x64/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.10.17/x64/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# This will happen for other sequence types, mappings and numeric types also.
+
+# But if you write condition like this : len(my_list)>0 and my_list is not None, then python raises error for numeric 
+# types.
+
+# Because numeric types dont have len() function.So it is raising an error.That is the reason why python writes 
+# condition like this -> my_list is not None and len(my_list)>0
+
+# Why this condition will not raising error is , python short circuiting the expresion. The condition after 'and' if 
+# condition before 'and' is False. If my_list is numeric type then it is automatically not equal to None. 
+
+my_list = 0
+if len(my_list) > 0 and my_list is not None:
+    print(my_list)
+else:
+    print("Nothing to display...")
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[25], line 13[0m
+[1;32m      1[0m [38;5;66;03m# This will happen for other sequence types, mappings and numeric types also.[39;00m
+[1;32m      2[0m 
+[1;32m      3[0m [38;5;66;03m# But if you write condition like this : len(my_list)>0 and my_list is not None, then python raises error for numeric [39;00m
+[0;32m   (...)[0m
+[1;32m      9[0m [38;5;66;03m# Why this condition will not raising error is , python short circuiting the expresion. The condition after 'and' if [39;00m
+[1;32m     10[0m [38;5;66;03m# condition before 'and' is False. If my_list is numeric type then it is automatically not equal to None. [39;00m
+[1;32m     12[0m my_list [38;5;241m=[39m [38;5;241m0[39m
+[0;32m---> 13[0m [38;5;28;01mif[39;00m [38;5;28;43mlen[39;49m[43m([49m[43mmy_list[49m[43m)[49m [38;5;241m>[39m [38;5;241m0[39m [38;5;129;01mand[39;00m my_list [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m     14[0m     [38;5;28mprint[39m(my_list)
+[1;32m     15[0m [38;5;28;01melse[39;00m:
+
+[0;31mTypeError[0m: object of type 'int' has no len()
+

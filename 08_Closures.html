@@ -1,0 +1,1457 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Closures &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '08_Closures';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Decorators" href="09_Decorators.html" />
+    <link rel="prev" title="Scopes and Namespaces" href="07_Scopes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="01_Intro_to_python.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="01_Intro_to_python.html">
+                    Introduction to Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="02_Python_Type_Hierarchy.html">Python Type Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Variables_and_Memory.html">Variables and Memory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="04_Numerical_Types/Numerical_Data_Types.html">Numerical Data Types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_Numerical_Types/01_Integers.html">Integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_Numerical_Types/02_Rationals.html">Rationals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_Numerical_Types/03_Decimals.html">Decimals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_Numerical_Types/04_Booleans.html">Booleans</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="06_First_Class_Functions/01_Introduction_to_First_Class_Functions.html">First Class Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/02_DocStrings_And_Annotations.html">Docstrings And Function Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/03_Function_Introspection.html">Function Introspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/04_Lambda_Functions.html">Lambda Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/05_Callables.html">Callables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/06_Higher_Order_Functions.html">Higher Order Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/07_Reducing_Functions.html">Reducing Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/08_Partial_Functions.html">Partial Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Scopes.html">Scopes and Namespaces</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Packages/packages.html">Packages</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F08_Closures.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/08_Closures.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Closures</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-the-free-variables">Modifying the free variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-instances-of-closure">Multiple Instances of Closure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-extended-scopes">Shared Extended Scopes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-closures">Applications of Closures</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="closures">
+<h1>Closures<a class="headerlink" href="#closures" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>As we know functions defined inside another function can access the outer (nonlocal) variables. Suppose consider the following example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+
+  <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> rocks!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+
+<span class="n">fn</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>In this code, varibale <code class="docutils literal notranslate"><span class="pre">x</span></code> in inner() refers to one in outer’s scope and we call this nonlocal variable <code class="docutils literal notranslate"><span class="pre">x</span></code> as free variable. In this code when we call outer() function then it first a new scope gets created and in that scope variable <code class="docutils literal notranslate"><span class="pre">x</span></code> and function <code class="docutils literal notranslate"><span class="pre">inner</span></code> gets created. And here we are returning the function object. Once the <code class="docutils literal notranslate"><span class="pre">inner()</span></code> function object gets returned then scope of outer() function gets deleted. Then variable <code class="docutils literal notranslate"><span class="pre">x</span></code> also gets deleted. Now a new question is raised i.e if variable <code class="docutils literal notranslate"><span class="pre">x</span></code> gets deleted then how the inner() function access the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> now. But it can access that variable <code class="docutils literal notranslate"><span class="pre">x</span></code> and prints te outputs as <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">rocks!</span></code>. The reason behind this output is because of closures.</p>
+</li>
+<li><p>A closure is a function object that remembers the values in enclosing scopes even if they are not in memory anymore. To eloborate this a closure occurs when a nested function (a function defined inside another function) remembers and uses variables from its enclosing scope, even after the outer function has finished executing. So simply closure is function and free variables. In above example closure is nothing but function <code class="docutils literal notranslate"><span class="pre">inner</span></code> and free variable <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p>So what python actually doing is it actually creates an internal object called <code class="docutils literal notranslate"><span class="pre">cell</span></code> and that cell points to object refereing by the free varaible and these free variable in outer and inner refers to this cell. And object returned by the outer function is not just function object it is actually a closure. Since these closures remembering the free variables by using the indirect reference called <code class="docutils literal notranslate"><span class="pre">cell</span></code>, they can able to get those nonlocal variables eventhough nonlocal scope got exhausted.</p></li>
+<li><p>CLosures only form with nonlocal variables only. They don’t form with global varaibles. To know the free variables and closures, we can use these syntax. Those are : <code class="docutils literal notranslate"><span class="pre">&lt;function_object</span> <span class="pre">or</span> <span class="pre">closure&gt;.__code__.cofreevars</span></code> to get free vriables and <code class="docutils literal notranslate"><span class="pre">&lt;function_object</span> <span class="pre">or</span> <span class="pre">closure&gt;.__closure__</span></code> to get the closure cell address and its reference object.</p>
+<p><strong>Ex</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+
+  <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+<span class="n">fn</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>Here the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> is shared between the two scopes. One is <code class="docutils literal notranslate"><span class="pre">outer</span></code> and another one is <code class="docutils literal notranslate"><span class="pre">closure</span></code>. Here the label of x is in two different scopes but always reference the same value. Python does this by creating the a <code class="docutils literal notranslate"><span class="pre">cell</span></code> an intermediary object which refers the actual value of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span></code> in two different scopes (<code class="docutils literal notranslate"><span class="pre">outer</span></code> and <code class="docutils literal notranslate"><span class="pre">inner</span></code>) refers to this <code class="docutils literal notranslate"><span class="pre">cell</span></code> object. When we requesting the value of the variable, python will double hop and gets the value.</p>
+<img src="_static\closure.png" alt="Closure Mechanism in Python" width="1200"/>
+<p>From the image we can say closure as <code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">-&gt;</span> <span class="pre">inner</span> <span class="pre">+</span> <span class="pre">extended</span> <span class="pre">scope</span> <span class="pre">x</span> <span class="pre">(cell)</span></code></p>
+</li>
+<li><p>So we can think closure as a function + an extended scope that contains the free variables. The free variables value is the object the cell points to -so that could change over time. Every time the function in the closure is called and the free variance gets referenced then python looks up the cell object and then return whatever the cell is pointing.</p></li>
+</ul>
+</section>
+<section id="modifying-the-free-variables">
+<h2>Modifying the free variables<a class="headerlink" href="#modifying-the-free-variables" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Consider an the following code :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span><span class="w"> </span><span class="nf">counter</span><span class="p">():</span>
+
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">inc</span><span class="p">():</span>
+
+      <span class="k">nonlocal</span> <span class="n">count</span>
+
+      <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="k">return</span> <span class="n">count</span>
+
+  <span class="k">return</span> <span class="n">inc</span>
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">counter</span><span class="p">()</span>
+<span class="n">fn</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>Here if you see the free variable is count. So closure contains the <code class="docutils literal notranslate"><span class="pre">inc()</span></code> function and free variable <code class="docutils literal notranslate"><span class="pre">count</span></code>. When counter counter() function gets executed, we get a closure as return value. At first cell points to the integer object <code class="docutils literal notranslate"><span class="pre">0</span></code>. Whenever that closure gets called the cell starts point to integer object <code class="docutils literal notranslate"><span class="pre">1</span></code>. If you again run the closure the cell now points to integer object <code class="docutils literal notranslate"><span class="pre">2</span></code>. But variable count in both counter() and inc() functions refer to same cell. Just the object referenced by cell gets changing here.</p>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see this in practice</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">counter</span><span class="p">():</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inc</span><span class="p">():</span>
+        
+        <span class="k">nonlocal</span> <span class="n">count</span>
+
+        <span class="n">count</span> <span class="o">+=</span><span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">count</span>
+    <span class="k">return</span> <span class="n">inc</span>
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">counter</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets introspect the closure using fn</span>
+
+<span class="n">fn</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_freevars</span>
+
+<span class="c1"># Here we can see the free variables in the closure which is count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;count&#39;,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see the cell and what cell actually pointing to</span>
+
+<span class="n">fn</span><span class="o">.</span><span class="vm">__closure__</span>
+
+<span class="c1"># Here we can see the cell memory address and integer object memory address</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f179462d8d0: int object at 0x7f179c9000d0&gt;,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># As we know this integer is 0 and since 0 is singleton object, then it memory address is fixed.</span>
+
+<span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># So if you compare both the memory address is same.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0x7f179c9000d0&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets call the function</span>
+
+<span class="n">fn</span><span class="p">()</span>
+
+<span class="n">fn</span><span class="o">.</span><span class="vm">__closure__</span>
+
+<span class="c1"># If you see the address of integer object gets changed, now it should points to 1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f179462d8d0: int object at 0x7f179c9000f0&gt;,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lets check the address of 1 as it is also a singleton object</span>
+
+<span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># If you see both address are same</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0x7f179c9000f0&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lets again call the function</span>
+
+<span class="n">fn</span><span class="p">()</span>
+
+<span class="n">fn</span><span class="o">.</span><span class="vm">__closure__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f179462d8d0: int object at 0x7f179c900110&gt;,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># If you see in all the three cases cell object is same, the only thing changing is the object referenced by cell. This is how python modifies free variables.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0x7f179c900110&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multiple-instances-of-closure">
+<h2>Multiple Instances of Closure<a class="headerlink" href="#multiple-instances-of-closure" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>As we know, Everytime we run a function a new scope gets created. If the function generates a closure then a new closure also gets created everytime.</p></li>
+<li><p>Consider the same example provided above , if you executed the <code class="docutils literal notranslate"><span class="pre">fn1</span> <span class="pre">=</span> <span class="pre">counter()</span></code> then a new scope and closure gets generated (that means new cell object gets created). If you again run the counter function as <code class="docutils literal notranslate"><span class="pre">fn2</span> <span class="pre">=</span> <span class="pre">counter()</span></code> a new scope and closure gets created which is different from initial scope and clsoure.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">counter</span><span class="p">():</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inc</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">count</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">count</span>
+    <span class="k">return</span> <span class="n">inc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn1</span> <span class="o">=</span> <span class="n">counter</span><span class="p">()</span>
+
+<span class="n">fn1</span><span class="o">.</span><span class="vm">__closure__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f179462f250: int object at 0x7f179c9000d0&gt;,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn2</span> <span class="o">=</span> <span class="n">counter</span><span class="p">()</span>
+
+<span class="n">fn2</span><span class="o">.</span><span class="vm">__closure__</span>
+
+<span class="c1"># If you observe the cell addresses of bot closures, they are different. From this we can say everytime you run the function a new scope gets created</span>
+<span class="c1"># If it generates closure, a new closure also gets created.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f179462f4c0: int object at 0x7f179c9000d0&gt;,)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="shared-extended-scopes">
+<h2>Shared Extended Scopes<a class="headerlink" href="#shared-extended-scopes" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Consider the following example :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">inc1</span><span class="p">():</span>
+      <span class="k">nonlocal</span> <span class="n">count</span>
+
+      <span class="n">count</span> <span class="o">+</span> <span class="o">=</span> <span class="mi">1</span>
+
+      <span class="k">return</span> <span class="n">count</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">inc2</span><span class="p">():</span>
+      <span class="k">nonlocal</span> <span class="n">count</span>
+
+      <span class="n">count</span> <span class="o">+</span> <span class="o">=</span> <span class="mi">1</span>
+
+      <span class="k">return</span> <span class="n">count</span>
+
+  <span class="k">return</span> <span class="n">inc1</span><span class="p">,</span><span class="n">inc2</span>
+
+<span class="n">fn1</span><span class="p">,</span><span class="n">fn2</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+<span class="n">fn1</span><span class="p">()</span>
+<span class="n">fn2</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</li>
+<li><p>In this example if you see closure generated by the function inc1() and inc2() share same free variable which means both closures generates same cell object and free variable in these two closures points to same cell.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inc1</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">count</span>
+
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">count</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inc2</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">count</span>
+
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">count</span>
+
+    <span class="k">return</span> <span class="n">inc1</span><span class="p">,</span><span class="n">inc2</span>
+
+<span class="n">fn1</span><span class="p">,</span><span class="n">fn2</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn1</span><span class="o">.</span><span class="vm">__closure__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f179462f700: int object at 0x7f179c9000d0&gt;,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn2</span><span class="o">.</span><span class="vm">__closure__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f179462f700: int object at 0x7f179c9000d0&gt;,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you see you share same cell object, so they will increment same count.</span>
+
+<span class="n">fn1</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn1</span><span class="p">()</span>
+
+<span class="c1"># If you see both are incrementing same count. This is how shared closures work.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># But we may think shared extended scopes are highly unusual which may not occur in real life scenario. But consider the following example</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">adder</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="c1"># Here n is free variable.</span>
+
+<span class="n">add_1</span> <span class="o">=</span> <span class="n">adder</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># This adder add 1 to each number you have provided</span>
+
+<span class="n">add_2</span> <span class="o">=</span> <span class="n">adder</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># This adder adds 2 to each number you have provided</span>
+
+<span class="n">add_3</span> <span class="o">=</span> <span class="n">adder</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># This adder adds 3 to each number you have provided</span>
+
+<span class="c1"># Here we have got three different closures as we have called adder function three times.</span>
+
+<span class="n">add_1</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_2</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_3</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># But generally we don&#39;t like to hardcode these things if we have loops in python. So we can write above code as like this</span>
+
+<span class="n">adders</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+
+    <span class="n">adders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Here we think all the three adders are append into list. But here we ave shared variable of n in all these three cases.</span>
+
+<span class="c1"># At first n points to 1 and lambda function gets appended into adders list. Next n points to 2 since lambda function is not evaluated now,</span>
+<span class="c1"># so n value in first lambda function also changed. At last all three lambda functions have same n which points to 3 only.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">adders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;function &lt;lambda&gt; at 0x7f17947fed40&gt;, &lt;function &lt;lambda&gt; at 0x7f17947fecb0&gt;, &lt;function &lt;lambda&gt; at 0x7f17947fec20&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adders</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adders</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adders</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># As we see all results same value. These problems might happen if we have shared varaibles. So we need to take care while dealing problems with shared closures or variables.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13
+13
+13
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here lambda is not a closure as n is global variable. Closure generated only with nonlocal variables.</span>
+
+<span class="n">adders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="vm">__closure__</span>
+
+<span class="c1"># If you see nothing gets printed</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_freevars</span>
+
+<span class="c1"># We can see that we got an empty tuple of free variables. From these we can say that clsoures are formed with nonlocal variables only.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>()
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note</strong> : Similar to shared closures we have nested closures also which are also follows same concept. One example for nested closures is the following code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span><span class="w"> </span><span class="nf">incrementor</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">start</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">inc</span><span class="p">():</span>
+            <span class="k">nonlocal</span> <span class="n">current</span>
+
+            <span class="n">current</span> <span class="o">+=</span> <span class="n">n</span>
+            <span class="k">return</span> <span class="n">current</span>
+
+        <span class="k">return</span> <span class="n">inc</span>
+    
+    <span class="k">return</span> <span class="n">inner</span>
+
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fn</span> <span class="pre">=</span> <span class="pre">incrementor(2)</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">fn.__code__.co_freevars</span></code> -&gt; (‘n’) where  n = 2</p>
+<p><code class="docutils literal notranslate"><span class="pre">inc_2</span> <span class="pre">=</span> <span class="pre">fn(100)</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">inc_2.__code__.co_freevars</span></code> -&gt; (‘current’, ‘n’) where current = 100, n = 2</p>
+<p><code class="docutils literal notranslate"><span class="pre">inc_2()</span></code> -&gt; 102</p>
+<p><code class="docutils literal notranslate"><span class="pre">inc_2()</span></code> -&gt; 104</p>
+</section>
+<section id="applications-of-closures">
+<h2>Applications of Closures<a class="headerlink" href="#applications-of-closures" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Averager</span>
+
+<span class="c1"># We need to create an application that takes one number at a time and return the average of all numbers given till now.</span>
+
+<span class="c1"># This can be done in two ways. One is using closures and using classes.</span>
+
+<span class="c1"># Using classes.</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Averager</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">number</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">+=</span> <span class="n">number</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span>
+    
+<span class="c1"># Now lets create an object for it</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Averager</span><span class="p">()</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Here we got average of 10,20,30 which is 20</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets do it using closures</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">():</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">count</span><span class="p">,</span><span class="n">total</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">number</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">total</span><span class="o">/</span><span class="n">count</span>
+    <span class="k">return</span> <span class="n">add</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">average</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_freevars</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;count&#39;, &#39;total&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="vm">__closure__</span>
+
+<span class="c1"># Here we can see two cells gets created for both total and count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f179462ffa0: int object at 0x7f179c9000d0&gt;,
+ &lt;cell at 0x7f179462f9a0: int object at 0x7f179c9000d0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Here we have average of 10,20,30</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2) Timer </span>
+
+<span class="c1"># This will return the time difference between creation of closure to now.</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">perf_counter</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">timer</span><span class="p">():</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">poll</span><span class="p">():</span>
+
+        <span class="k">return</span> <span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="k">return</span> <span class="n">poll</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.004292337999999063
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00974453599999947
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span><span class="p">()</span>
+
+<span class="c1"># You can see the difference of time in eac execution. You can do this using class also.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.015551927000004184
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3) Application for getting the no of times a function gets called</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">counter</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">counters</span><span class="p">):</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="k">nonlocal</span> <span class="n">count</span>
+
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">counters</span><span class="p">[</span><span class="n">fn</span><span class="o">.</span><span class="vm">__name__</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
+
+        <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="c1"># This counter function takes two arguments functiona and a dictionory which stores how many times a function gets called.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mult</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+
+        <span class="n">result</span> <span class="o">*=</span> <span class="n">i</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets do how many times each function gets called</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="n">add</span> <span class="o">=</span> <span class="n">counter</span><span class="p">(</span><span class="n">add</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">mult</span> <span class="o">=</span> <span class="n">counter</span><span class="p">(</span><span class="n">mult</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">fact</span> <span class="o">=</span> <span class="n">counter</span><span class="p">(</span><span class="n">fact</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># Here i have just changed the functionality of each functions itself. Because add, mult, fact are not just functions now they are closures.</span>
+
+<span class="n">add</span><span class="o">.</span><span class="vm">__closure__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f179462eef0: int object at 0x7f179c9000d0&gt;,
+ &lt;cell at 0x7f179462cfa0: dict object at 0x7f1794699ac0&gt;,
+ &lt;cell at 0x7f17946949a0: function object at 0x7f17947ff370&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="o">.</span><span class="vm">__closure__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f1794694760: int object at 0x7f179c9000d0&gt;,
+ &lt;cell at 0x7f17946946d0: dict object at 0x7f1794699ac0&gt;,
+ &lt;cell at 0x7f1794694d30: function object at 0x7f17947fe5f0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mult</span><span class="o">.</span><span class="vm">__closure__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;cell at 0x7f179462fb50: int object at 0x7f179c9000d0&gt;,
+ &lt;cell at 0x7f179462f970: dict object at 0x7f1794699ac0&gt;,
+ &lt;cell at 0x7f1794694130: function object at 0x7f17947fef80&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eventhough they became the closures but we can use them as functions also. But it actually do an extra thing by just recording how many times it gets called</span>
+
+<span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mult</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you print the dictionary we can see how many times each function gets called</span>
+
+<span class="n">c</span>
+
+<span class="c1"># These are actually some cool and simple applications of closures but there are so many applications of closures.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;add&#39;: 2, &#39;mult&#39;: 1, &#39;fact&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="07_Scopes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Scopes and Namespaces</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="09_Decorators.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Decorators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-the-free-variables">Modifying the free variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-instances-of-closure">Multiple Instances of Closure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-extended-scopes">Shared Extended Scopes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-closures">Applications of Closures</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

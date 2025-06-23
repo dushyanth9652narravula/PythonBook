@@ -1,0 +1,1641 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Decimals &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04_Numerical_Types/03_Decimals';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Booleans" href="04_Booleans.html" />
+    <link rel="prev" title="Rationals" href="02_Rationals.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../01_Intro_to_python.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../01_Intro_to_python.html">
+                    Introduction to Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_Python_Type_Hierarchy.html">Python Type Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Variables_and_Memory.html">Variables and Memory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Numerical_Data_Types.html">Numerical Data Types</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_Integers.html">Integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_Rationals.html">Rationals</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Decimals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_Booleans.html">Booleans</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_First_Class_Functions/01_Introduction_to_First_Class_Functions.html">First Class Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/02_DocStrings_And_Annotations.html">Docstrings And Function Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/03_Function_Introspection.html">Function Introspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/04_Lambda_Functions.html">Lambda Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/05_Callables.html">Callables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/06_Higher_Order_Functions.html">Higher Order Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/07_Reducing_Functions.html">Reducing Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/08_Partial_Functions.html">Partial Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Scopes.html">Scopes and Namespaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_Modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Packages/packages.html">Packages</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F04_Numerical_Types/03_Decimals.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/04_Numerical_Types/03_Decimals.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Decimals</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#need-of-decimal-module">Need of Decimal Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-module">Decimal Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-constructors-and-contexts">Decimal Constructors and Contexts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-math-operations">Decimal Math Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-performance-considerations">Decimal Performance Considerations</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="decimals">
+<h1>Decimals<a class="headerlink" href="#decimals" title="Link to this heading">#</a></h1>
+<section id="need-of-decimal-module">
+<h2>Need of Decimal Module<a class="headerlink" href="#need-of-decimal-module" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>In python we have two data types to represent decimal numbers. Those are Float and Decimal Module. Floats simply converts decimal numbers into binary numbers and then store them into the memory. But there are some disadvantages with with floating point numbers.</p>
+<ul>
+<li><p>Floating Point Numbers are not exact. We know that some of the numbers have finite decimal representation but have infinite binary representation.</p>
+<p><strong>Ex</strong> : <span class="math notranslate nohighlight">\((0.1)_{10}\)</span> -&gt; finite decimal expansion</p>
+</li>
+</ul>
+<p><span style="margin-left: 73px;"></span> <span class="math notranslate nohighlight">\((0.1)_{2}\)</span> -&gt; infinite binary representation</p>
+<ul class="simple">
+<li><p>Consider a bank where we need to add up all the financial transactions that took place in a particular time period. The amount is 100.01. But float data type stores it as 100.010000000000051159076975. Now we need to add this amount 1 billion times, then the amount we need to get is 100010000000.0 (exact decimal). But the we might get is 100009998761.1463928222656. Here we have got $1238.85 less which is relatively small (% difference is small) but absolute difference is large.</p></li>
+<li><p>To overcome all these issues we use decimal module in python</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="decimal-module">
+<h2>Decimal Module<a class="headerlink" href="#decimal-module" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>In python, decimal data type has context that controls certain aspects of working with decimals. It actually controls precision of rounding algorithm used while dealing with decimal datatype. While declaring decimals, we actually set precision and rounding.</p>
+<p><strong>Precision</strong> : Precision generally means how many numbers we need after a decimal point i.e how accurately we need to represent the decimal values</p>
+<p><strong>Rounding Algorithm</strong> :  There are generally diiferent rounding algorithms in python those are the following.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ROUND_UP</span></code>        : rounds away from zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROUND_DOWN</span></code>      : rounds towards zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROUND_CEILING</span></code>   : rounds to ceiling (towards +inf)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROUND_FLOOR</span></code>     : rounds to floor (towars -inf)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROUND_HALF_UP</span></code>   : rounds to nearest, ties away from zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROUND_HALF_DOWN</span></code> : rounds to nearest, ties toward zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROUND_HALF_EVEN</span></code> : rounds to nearest, ties to even (least significant digit is even)</p></li>
+</ul>
+</li>
+<li><p>Generally decimals have two contexts. One is <code class="docutils literal notranslate"><span class="pre">Global</span> <span class="pre">Context</span></code> which is default context. Second One is <code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">Context</span></code> which is used to set the temporary settings locally without effecting global settings. Generally we set the gloable context at top, if we need some other precision or rounding algorithm for particular calculations we actually set these by using local context.</p></li>
+<li><p>To set global context we actually use <code class="docutils literal notranslate"><span class="pre">decimal.getcontext()</span></code> and if you want to set local context we use <code class="docutils literal notranslate"><span class="pre">decimal.localcontext(ctx=None)</span></code> which actually copies the context from ctx and apply the changes the original context manager. If ctx is None it actually copies global context and apply changes such as precison and rounding algorithm.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets implement decimal module</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">decimal</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># decimal.getcontext() method actually copies the default context of python and returns it. We actually cange this context.</span>
+
+<span class="n">g_ctx</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">.</span><span class="n">getcontext</span><span class="p">()</span>
+<span class="n">g_ctx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Context(prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see what is default precision and rounding algorithm</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">g_ctx</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g_ctx</span><span class="o">.</span><span class="n">rounding</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28
+ROUND_HALF_EVEN
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets cange the precision and rounding algorithm of global context</span>
+
+<span class="n">g_ctx</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">g_ctx</span><span class="o">.</span><span class="n">rounding</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">.</span><span class="n">ROUND_HALF_UP</span>
+
+<span class="n">g_ctx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Context(prec=6, rounding=ROUND_HALF_UP, Emin=-999999, Emax=999999, capitals=1, clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see the local context and how we actually change the decimal settings in local context</span>
+
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">.</span><span class="n">localcontext</span><span class="p">()</span> <span class="c1"># it actually retured a context manager. We need use with statement to check the settings in it</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;decimal.ContextManager object at 0x7ff520d9ba50&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">ctx</span> <span class="k">as</span> <span class="n">l_ctx</span><span class="p">:</span>
+
+    <span class="c1"># Now lets print what context it actually copied if we wont sprecify any decimal context</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Precision of directly copied decimal context : &quot;</span><span class="p">,</span><span class="n">l_ctx</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rounding algorithm of directly copied context :&quot;</span><span class="p">,</span> <span class="n">l_ctx</span><span class="o">.</span><span class="n">rounding</span><span class="p">)</span>
+
+    <span class="c1"># Now lets change the precision and rounding algorithm</span>
+
+    <span class="n">l_ctx</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">l_ctx</span><span class="o">.</span><span class="n">rounding</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">.</span><span class="n">ROUND_FLOOR</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Precision of local decimal context : &quot;</span><span class="p">,</span><span class="n">l_ctx</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rounding algorithm of local decimal context :&quot;</span><span class="p">,</span> <span class="n">l_ctx</span><span class="o">.</span><span class="n">rounding</span><span class="p">)</span>
+
+    <span class="c1"># Changes might be applied to calculations within the with statement. </span>
+
+    <span class="c1"># From the output we can see it actually copied global contex initially if we won&#39;t specify ctx </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precision of directly copied decimal context :  6
+Rounding algorithm of directly copied context : ROUND_HALF_UP
+Precision of local decimal context :  10
+Rounding algorithm of local decimal context : ROUND_FLOOR
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see how decimal accurately represents the floating point numbers when compared to floats.</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;1.35&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.25f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3500000000000000000000000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.35</span> <span class="c1"># By default python represent it as float</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.25f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># From the ouput we can see the difference between float and decimal module representation of floating point numbers.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3500000000000000888178420
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="decimal-constructors-and-contexts">
+<h2>Decimal Constructors and Contexts<a class="headerlink" href="#decimal-constructors-and-contexts" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Decimal Objects can be constructed by using decimal class in decimal module.</p>
+<p><strong>Syntax</strong> : Decimal(x) where x can be any data type.</p>
+<p>Mostly we pass strings or integers. If we pass floats as input then decimal won’t represent it accurately. Since floats are not too accurate then passing inaccurate results to decimal produces the inaccurate representations of the numbers.</p>
+<p>Here x can be tuple also. But tuple structure must be like this (sign,digits,place_of_decimal)</p>
+<p>If sign = 0 then it is positive number otherwise negative number. Digits must be passed a tuple such as (3,1,4,5,6). Place_of_decimal must be negative if it is -4 then we it place deimal point at 4th position from right side.</p>
+<p>(1,(3,1,4,5,6),-4) -&gt; -3.1456</p>
+</li>
+<li><p>We know that we will have a default precision and rounding set for Decimals. But that precision doesn’t effects the way of storing the decimals. It only effects the arithmetic Operations. Suppose the precsion is 2, Now we are sotring’0.12345’ as Decimal, then it would store as 0.12345 only. Here precision doesn’t effect the way of decimal is created. If you want to add 0.12345 + 0.12345 the actual answer, you need to get is 0.2649. But for this precision, You will get answer as 0.25 . Because here precsion is 2, so after addition , the result gets roundoff to 2 decimals</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets create some decimals by using the Decimal Class.</span>
+
+<span class="c1"># 1) Lets start with Integers</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">,</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Decimal(&#39;10&#39;), Decimal(&#39;12&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lets do with strings</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.12345&#39;</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">,</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Decimal(&#39;0.12345&#39;), Decimal(&#39;10&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets how we can create decimal with tuples</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">((</span><span class="mi">0</span><span class="p">,(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># It would result 34.567</span>
+
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decimal(&#39;34.567&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">((</span><span class="mi">1</span><span class="p">,(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span><span class="o">-</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># It would result -3.4567</span>
+
+<span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decimal(&#39;-3.4567&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We know that we donot use floats for creating decimals, becuase floats are inacccurate. </span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decimal(&#39;0.1000000000000000055511151231257827021181583404541015625&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can see the deciamal that created for float argument is inaccurate.The float 0.1 itself cannot be stored </span>
+<span class="c1"># accurately</span>
+
+<span class="n">Decimal</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="o">==</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see how precsion effects the arithmetic operations</span>
+
+<span class="n">decimal</span><span class="o">.</span> <span class="n">getcontext</span><span class="p">()</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.123456&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.123456&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">decimal</span><span class="o">.</span><span class="n">localcontext</span><span class="p">()</span> <span class="k">as</span> <span class="n">ctx</span><span class="p">:</span>
+
+    <span class="n">decimal</span><span class="o">.</span><span class="n">getcontext</span><span class="p">()</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;In Local Context </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.123456 0.123456
+0.2469
+In Local Context 0.25
+0.25
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="decimal-math-operations">
+<h2>Decimal Math Operations<a class="headerlink" href="#decimal-math-operations" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>All Math operations are same for both normal integers and decimal integers. But the only difference occurs with two operators only. Tose are floor division (<code class="docutils literal notranslate"><span class="pre">//</span></code>) and modulo operator(<code class="docutils literal notranslate"><span class="pre">%</span></code>).</p></li>
+<li><p>Because for decimals ints floor divison (<code class="docutils literal notranslate"><span class="pre">a//b</span></code>) does trun(a/b) which means it actually returns integral part only and truncates decimals. If you see trunc(-3.14) , it actually results -3, whereas floor(-3.14) returns -4.</p></li>
+<li><p>Since both follows euclidean division lemma then a%b also changes.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets first euclidean division lemma for both int and decimals</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">//</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">%</span><span class="k">y</span>)
+<span class="nb">print</span><span class="p">(</span><span class="nb">divmod</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">//</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-10 3
+-4 2
+(-4, 2)
+True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">//</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">%</span><span class="k">y</span>)
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">//</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># We can see the even though the results are different, but satisfies the euclidean division lemma</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-10 3
+-3 -1
+True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see some different math operations </span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">Decimal</span><span class="p">)</span>
+
+<span class="c1"># Here we can see the functions offered by decimal class</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class Decimal in module decimal:
+
+class Decimal(builtins.object)
+ |  Decimal(value=&#39;0&#39;, context=None)
+ |  
+ |  Construct a new Decimal object. &#39;value&#39; can be an integer, string, tuple,
+ |  or another Decimal object. If no value is given, return Decimal(&#39;0&#39;). The
+ |  context does not affect the conversion and is only passed to determine if
+ |  the InvalidOperation trap is active.
+ |  
+ |  Methods defined here:
+ |  
+ |  __abs__(self, /)
+ |      abs(self)
+ |  
+ |  __add__(self, value, /)
+ |      Return self+value.
+ |  
+ |  __bool__(self, /)
+ |      True if self else False
+ |  
+ |  __ceil__(...)
+ |  
+ |  __complex__(...)
+ |  
+ |  __copy__(...)
+ |  
+ |  __deepcopy__(...)
+ |  
+ |  __divmod__(self, value, /)
+ |      Return divmod(self, value).
+ |  
+ |  __eq__(self, value, /)
+ |      Return self==value.
+ |  
+ |  __float__(self, /)
+ |      float(self)
+ |  
+ |  __floor__(...)
+ |  
+ |  __floordiv__(self, value, /)
+ |      Return self//value.
+ |  
+ |  __format__(...)
+ |      Default object formatter.
+ |  
+ |  __ge__(self, value, /)
+ |      Return self&gt;=value.
+ |  
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |  
+ |  __gt__(self, value, /)
+ |      Return self&gt;value.
+ |  
+ |  __hash__(self, /)
+ |      Return hash(self).
+ |  
+ |  __int__(self, /)
+ |      int(self)
+ |  
+ |  __le__(self, value, /)
+ |      Return self&lt;=value.
+ |  
+ |  __lt__(self, value, /)
+ |      Return self&lt;value.
+ |  
+ |  __mod__(self, value, /)
+ |      Return self%value.
+ |  
+ |  __mul__(self, value, /)
+ |      Return self*value.
+ |  
+ |  __ne__(self, value, /)
+ |      Return self!=value.
+ |  
+ |  __neg__(self, /)
+ |      -self
+ |  
+ |  __pos__(self, /)
+ |      +self
+ |  
+ |  __pow__(self, value, mod=None, /)
+ |      Return pow(self, value, mod).
+ |  
+ |  __radd__(self, value, /)
+ |      Return value+self.
+ |  
+ |  __rdivmod__(self, value, /)
+ |      Return divmod(value, self).
+ |  
+ |  __reduce__(...)
+ |      Helper for pickle.
+ |  
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |  
+ |  __rfloordiv__(self, value, /)
+ |      Return value//self.
+ |  
+ |  __rmod__(self, value, /)
+ |      Return value%self.
+ |  
+ |  __rmul__(self, value, /)
+ |      Return value*self.
+ |  
+ |  __round__(...)
+ |  
+ |  __rpow__(self, value, mod=None, /)
+ |      Return pow(value, self, mod).
+ |  
+ |  __rsub__(self, value, /)
+ |      Return value-self.
+ |  
+ |  __rtruediv__(self, value, /)
+ |      Return value/self.
+ |  
+ |  __sizeof__(...)
+ |      Size of object in memory, in bytes.
+ |  
+ |  __str__(self, /)
+ |      Return str(self).
+ |  
+ |  __sub__(self, value, /)
+ |      Return self-value.
+ |  
+ |  __truediv__(self, value, /)
+ |      Return self/value.
+ |  
+ |  __trunc__(...)
+ |  
+ |  adjusted(self, /)
+ |      Return the adjusted exponent of the number.  Defined as exp + digits - 1.
+ |  
+ |  as_integer_ratio(self, /)
+ |      Decimal.as_integer_ratio() -&gt; (int, int)
+ |      
+ |      Return a pair of integers, whose ratio is exactly equal to the original
+ |      Decimal and with a positive denominator. The ratio is in lowest terms.
+ |      Raise OverflowError on infinities and a ValueError on NaNs.
+ |  
+ |  as_tuple(self, /)
+ |      Return a tuple representation of the number.
+ |  
+ |  canonical(self, /)
+ |      Return the canonical encoding of the argument.  Currently, the encoding
+ |      of a Decimal instance is always canonical, so this operation returns its
+ |      argument unchanged.
+ |  
+ |  compare(self, /, other, context=None)
+ |      Compare self to other.  Return a decimal value:
+ |      
+ |      a or b is a NaN ==&gt; Decimal(&#39;NaN&#39;)
+ |      a &lt; b           ==&gt; Decimal(&#39;-1&#39;)
+ |      a == b          ==&gt; Decimal(&#39;0&#39;)
+ |      a &gt; b           ==&gt; Decimal(&#39;1&#39;)
+ |  
+ |  compare_signal(self, /, other, context=None)
+ |      Identical to compare, except that all NaNs signal.
+ |  
+ |  compare_total(self, /, other, context=None)
+ |      Compare two operands using their abstract representation rather than
+ |      their numerical value.  Similar to the compare() method, but the result
+ |      gives a total ordering on Decimal instances.  Two Decimal instances with
+ |      the same numeric value but different representations compare unequal
+ |      in this ordering:
+ |      
+ |          &gt;&gt;&gt; Decimal(&#39;12.0&#39;).compare_total(Decimal(&#39;12&#39;))
+ |          Decimal(&#39;-1&#39;)
+ |      
+ |      Quiet and signaling NaNs are also included in the total ordering. The result
+ |      of this function is Decimal(&#39;0&#39;) if both operands have the same representation,
+ |      Decimal(&#39;-1&#39;) if the first operand is lower in the total order than the second,
+ |      and Decimal(&#39;1&#39;) if the first operand is higher in the total order than the
+ |      second operand. See the specification for details of the total order.
+ |      
+ |      This operation is unaffected by context and is quiet: no flags are changed
+ |      and no rounding is performed. As an exception, the C version may raise
+ |      InvalidOperation if the second operand cannot be converted exactly.
+ |  
+ |  compare_total_mag(self, /, other, context=None)
+ |      Compare two operands using their abstract representation rather than their
+ |      value as in compare_total(), but ignoring the sign of each operand.
+ |      
+ |      x.compare_total_mag(y) is equivalent to x.copy_abs().compare_total(y.copy_abs()).
+ |      
+ |      This operation is unaffected by context and is quiet: no flags are changed
+ |      and no rounding is performed. As an exception, the C version may raise
+ |      InvalidOperation if the second operand cannot be converted exactly.
+ |  
+ |  conjugate(self, /)
+ |      Return self.
+ |  
+ |  copy_abs(self, /)
+ |      Return the absolute value of the argument.  This operation is unaffected by
+ |      context and is quiet: no flags are changed and no rounding is performed.
+ |  
+ |  copy_negate(self, /)
+ |      Return the negation of the argument.  This operation is unaffected by context
+ |      and is quiet: no flags are changed and no rounding is performed.
+ |  
+ |  copy_sign(self, /, other, context=None)
+ |      Return a copy of the first operand with the sign set to be the same as the
+ |      sign of the second operand. For example:
+ |      
+ |          &gt;&gt;&gt; Decimal(&#39;2.3&#39;).copy_sign(Decimal(&#39;-1.5&#39;))
+ |          Decimal(&#39;-2.3&#39;)
+ |      
+ |      This operation is unaffected by context and is quiet: no flags are changed
+ |      and no rounding is performed. As an exception, the C version may raise
+ |      InvalidOperation if the second operand cannot be converted exactly.
+ |  
+ |  exp(self, /, context=None)
+ |      Return the value of the (natural) exponential function e**x at the given
+ |      number.  The function always uses the ROUND_HALF_EVEN mode and the result
+ |      is correctly rounded.
+ |  
+ |  fma(self, /, other, third, context=None)
+ |      Fused multiply-add.  Return self*other+third with no rounding of the
+ |      intermediate product self*other.
+ |      
+ |          &gt;&gt;&gt; Decimal(2).fma(3, 5)
+ |          Decimal(&#39;11&#39;)
+ |  
+ |  is_canonical(self, /)
+ |      Return True if the argument is canonical and False otherwise.  Currently,
+ |      a Decimal instance is always canonical, so this operation always returns
+ |      True.
+ |  
+ |  is_finite(self, /)
+ |      Return True if the argument is a finite number, and False if the argument
+ |      is infinite or a NaN.
+ |  
+ |  is_infinite(self, /)
+ |      Return True if the argument is either positive or negative infinity and
+ |      False otherwise.
+ |  
+ |  is_nan(self, /)
+ |      Return True if the argument is a (quiet or signaling) NaN and False
+ |      otherwise.
+ |  
+ |  is_normal(self, /, context=None)
+ |      Return True if the argument is a normal finite non-zero number with an
+ |      adjusted exponent greater than or equal to Emin. Return False if the
+ |      argument is zero, subnormal, infinite or a NaN.
+ |  
+ |  is_qnan(self, /)
+ |      Return True if the argument is a quiet NaN, and False otherwise.
+ |  
+ |  is_signed(self, /)
+ |      Return True if the argument has a negative sign and False otherwise.
+ |      Note that both zeros and NaNs can carry signs.
+ |  
+ |  is_snan(self, /)
+ |      Return True if the argument is a signaling NaN and False otherwise.
+ |  
+ |  is_subnormal(self, /, context=None)
+ |      Return True if the argument is subnormal, and False otherwise. A number is
+ |      subnormal if it is non-zero, finite, and has an adjusted exponent less
+ |      than Emin.
+ |  
+ |  is_zero(self, /)
+ |      Return True if the argument is a (positive or negative) zero and False
+ |      otherwise.
+ |  
+ |  ln(self, /, context=None)
+ |      Return the natural (base e) logarithm of the operand. The function always
+ |      uses the ROUND_HALF_EVEN mode and the result is correctly rounded.
+ |  
+ |  log10(self, /, context=None)
+ |      Return the base ten logarithm of the operand. The function always uses the
+ |      ROUND_HALF_EVEN mode and the result is correctly rounded.
+ |  
+ |  logb(self, /, context=None)
+ |      For a non-zero number, return the adjusted exponent of the operand as a
+ |      Decimal instance.  If the operand is a zero, then Decimal(&#39;-Infinity&#39;) is
+ |      returned and the DivisionByZero condition is raised. If the operand is
+ |      an infinity then Decimal(&#39;Infinity&#39;) is returned.
+ |  
+ |  logical_and(self, /, other, context=None)
+ |      Return the digit-wise &#39;and&#39; of the two (logical) operands.
+ |  
+ |  logical_invert(self, /, context=None)
+ |      Return the digit-wise inversion of the (logical) operand.
+ |  
+ |  logical_or(self, /, other, context=None)
+ |      Return the digit-wise &#39;or&#39; of the two (logical) operands.
+ |  
+ |  logical_xor(self, /, other, context=None)
+ |      Return the digit-wise &#39;exclusive or&#39; of the two (logical) operands.
+ |  
+ |  max(self, /, other, context=None)
+ |      Maximum of self and other.  If one operand is a quiet NaN and the other is
+ |      numeric, the numeric operand is returned.
+ |  
+ |  max_mag(self, /, other, context=None)
+ |      Similar to the max() method, but the comparison is done using the absolute
+ |      values of the operands.
+ |  
+ |  min(self, /, other, context=None)
+ |      Minimum of self and other. If one operand is a quiet NaN and the other is
+ |      numeric, the numeric operand is returned.
+ |  
+ |  min_mag(self, /, other, context=None)
+ |      Similar to the min() method, but the comparison is done using the absolute
+ |      values of the operands.
+ |  
+ |  next_minus(self, /, context=None)
+ |      Return the largest number representable in the given context (or in the
+ |      current default context if no context is given) that is smaller than the
+ |      given operand.
+ |  
+ |  next_plus(self, /, context=None)
+ |      Return the smallest number representable in the given context (or in the
+ |      current default context if no context is given) that is larger than the
+ |      given operand.
+ |  
+ |  next_toward(self, /, other, context=None)
+ |      If the two operands are unequal, return the number closest to the first
+ |      operand in the direction of the second operand.  If both operands are
+ |      numerically equal, return a copy of the first operand with the sign set
+ |      to be the same as the sign of the second operand.
+ |  
+ |  normalize(self, /, context=None)
+ |      Normalize the number by stripping the rightmost trailing zeros and
+ |      converting any result equal to Decimal(&#39;0&#39;) to Decimal(&#39;0e0&#39;).  Used
+ |      for producing canonical values for members of an equivalence class.
+ |      For example, Decimal(&#39;32.100&#39;) and Decimal(&#39;0.321000e+2&#39;) both normalize
+ |      to the equivalent value Decimal(&#39;32.1&#39;).
+ |  
+ |  number_class(self, /, context=None)
+ |      Return a string describing the class of the operand.  The returned value
+ |      is one of the following ten strings:
+ |      
+ |          * &#39;-Infinity&#39;, indicating that the operand is negative infinity.
+ |          * &#39;-Normal&#39;, indicating that the operand is a negative normal number.
+ |          * &#39;-Subnormal&#39;, indicating that the operand is negative and subnormal.
+ |          * &#39;-Zero&#39;, indicating that the operand is a negative zero.
+ |          * &#39;+Zero&#39;, indicating that the operand is a positive zero.
+ |          * &#39;+Subnormal&#39;, indicating that the operand is positive and subnormal.
+ |          * &#39;+Normal&#39;, indicating that the operand is a positive normal number.
+ |          * &#39;+Infinity&#39;, indicating that the operand is positive infinity.
+ |          * &#39;NaN&#39;, indicating that the operand is a quiet NaN (Not a Number).
+ |          * &#39;sNaN&#39;, indicating that the operand is a signaling NaN.
+ |  
+ |  quantize(self, /, exp, rounding=None, context=None)
+ |      Return a value equal to the first operand after rounding and having the
+ |      exponent of the second operand.
+ |      
+ |          &gt;&gt;&gt; Decimal(&#39;1.41421356&#39;).quantize(Decimal(&#39;1.000&#39;))
+ |          Decimal(&#39;1.414&#39;)
+ |      
+ |      Unlike other operations, if the length of the coefficient after the quantize
+ |      operation would be greater than precision, then an InvalidOperation is signaled.
+ |      This guarantees that, unless there is an error condition, the quantized exponent
+ |      is always equal to that of the right-hand operand.
+ |      
+ |      Also unlike other operations, quantize never signals Underflow, even if the
+ |      result is subnormal and inexact.
+ |      
+ |      If the exponent of the second operand is larger than that of the first, then
+ |      rounding may be necessary. In this case, the rounding mode is determined by the
+ |      rounding argument if given, else by the given context argument; if neither
+ |      argument is given, the rounding mode of the current thread&#39;s context is used.
+ |  
+ |  radix(self, /)
+ |      Return Decimal(10), the radix (base) in which the Decimal class does
+ |      all its arithmetic. Included for compatibility with the specification.
+ |  
+ |  remainder_near(self, /, other, context=None)
+ |      Return the remainder from dividing self by other.  This differs from
+ |      self % other in that the sign of the remainder is chosen so as to minimize
+ |      its absolute value. More precisely, the return value is self - n * other
+ |      where n is the integer nearest to the exact value of self / other, and
+ |      if two integers are equally near then the even one is chosen.
+ |      
+ |      If the result is zero then its sign will be the sign of self.
+ |  
+ |  rotate(self, /, other, context=None)
+ |      Return the result of rotating the digits of the first operand by an amount
+ |      specified by the second operand.  The second operand must be an integer in
+ |      the range -precision through precision. The absolute value of the second
+ |      operand gives the number of places to rotate. If the second operand is
+ |      positive then rotation is to the left; otherwise rotation is to the right.
+ |      The coefficient of the first operand is padded on the left with zeros to
+ |      length precision if necessary. The sign and exponent of the first operand are
+ |      unchanged.
+ |  
+ |  same_quantum(self, /, other, context=None)
+ |      Test whether self and other have the same exponent or whether both are NaN.
+ |      
+ |      This operation is unaffected by context and is quiet: no flags are changed
+ |      and no rounding is performed. As an exception, the C version may raise
+ |      InvalidOperation if the second operand cannot be converted exactly.
+ |  
+ |  scaleb(self, /, other, context=None)
+ |      Return the first operand with the exponent adjusted the second.  Equivalently,
+ |      return the first operand multiplied by 10**other. The second operand must be
+ |      an integer.
+ |  
+ |  shift(self, /, other, context=None)
+ |      Return the result of shifting the digits of the first operand by an amount
+ |      specified by the second operand.  The second operand must be an integer in
+ |      the range -precision through precision. The absolute value of the second
+ |      operand gives the number of places to shift. If the second operand is
+ |      positive, then the shift is to the left; otherwise the shift is to the
+ |      right. Digits shifted into the coefficient are zeros. The sign and exponent
+ |      of the first operand are unchanged.
+ |  
+ |  sqrt(self, /, context=None)
+ |      Return the square root of the argument to full precision. The result is
+ |      correctly rounded using the ROUND_HALF_EVEN rounding mode.
+ |  
+ |  to_eng_string(self, /, context=None)
+ |      Convert to an engineering-type string.  Engineering notation has an exponent
+ |      which is a multiple of 3, so there are up to 3 digits left of the decimal
+ |      place. For example, Decimal(&#39;123E+1&#39;) is converted to Decimal(&#39;1.23E+3&#39;).
+ |      
+ |      The value of context.capitals determines whether the exponent sign is lower
+ |      or upper case. Otherwise, the context does not affect the operation.
+ |  
+ |  to_integral(self, /, rounding=None, context=None)
+ |      Identical to the to_integral_value() method.  The to_integral() name has been
+ |      kept for compatibility with older versions.
+ |  
+ |  to_integral_exact(self, /, rounding=None, context=None)
+ |      Round to the nearest integer, signaling Inexact or Rounded as appropriate if
+ |      rounding occurs.  The rounding mode is determined by the rounding parameter
+ |      if given, else by the given context. If neither parameter is given, then the
+ |      rounding mode of the current default context is used.
+ |  
+ |  to_integral_value(self, /, rounding=None, context=None)
+ |      Round to the nearest integer without signaling Inexact or Rounded.  The
+ |      rounding mode is determined by the rounding parameter if given, else by
+ |      the given context. If neither parameter is given, then the rounding mode
+ |      of the current default context is used.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Class methods defined here:
+ |  
+ |  from_float(f, /) from builtins.type
+ |      Class method that converts a float to a decimal number, exactly.
+ |      Since 0.1 is not exactly representable in binary floating point,
+ |      Decimal.from_float(0.1) is not the same as Decimal(&#39;0.1&#39;).
+ |      
+ |          &gt;&gt;&gt; Decimal.from_float(0.1)
+ |          Decimal(&#39;0.1000000000000000055511151231257827021181583404541015625&#39;)
+ |          &gt;&gt;&gt; Decimal.from_float(float(&#39;nan&#39;))
+ |          Decimal(&#39;NaN&#39;)
+ |          &gt;&gt;&gt; Decimal.from_float(float(&#39;inf&#39;))
+ |          Decimal(&#39;Infinity&#39;)
+ |          &gt;&gt;&gt; Decimal.from_float(float(&#39;-inf&#39;))
+ |          Decimal(&#39;-Infinity&#39;)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  imag
+ |  
+ |  real
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="n">x_dec</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.01&#39;</span><span class="p">)</span>
+
+<span class="n">root_float</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">root_mixed</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x_dec</span><span class="p">)</span>
+
+<span class="n">root_dec</span> <span class="o">=</span> <span class="n">x_dec</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">root_float</span><span class="p">,</span><span class="s1">&#39;1.27f&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">root_mixed</span><span class="p">,</span><span class="s1">&#39;1.27f&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">root_dec</span><span class="p">,</span><span class="s1">&#39;1.27f&#39;</span><span class="p">))</span>
+
+<span class="c1"># Here we can see that both root_float and root_mixed are same and inaccurate.Because square root of 0.01 is simply 0.1</span>
+<span class="c1"># And we can simply  see that when we are using function from math module for decimals, it first converts decimals to float and </span>
+<span class="c1"># then they perform math operations. So use operators provided by the decimal module</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.100000000000000005551115123
+0.100000000000000005551115123
+0.100000000000000000000000000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can see we are getting accurate results with decimals only not with float. But the only thing is we have only</span>
+<span class="c1"># limited math functions in decimal class</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">root_float</span> <span class="o">*</span> <span class="n">root_float</span><span class="p">,</span><span class="s1">&#39;1.27f&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">root_mixed</span> <span class="o">*</span> <span class="n">root_mixed</span><span class="p">,</span><span class="s1">&#39;1.27f&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">root_dec</span> <span class="o">*</span> <span class="n">root_dec</span><span class="p">,</span><span class="s1">&#39;1.27f&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.010000000000000001942890293
+0.010000000000000001942890293
+0.010000000000000000000000000
+</pre></div>
+</div>
+</div>
+</div>
+<section id="decimal-performance-considerations">
+<h3>Decimal Performance Considerations<a class="headerlink" href="#decimal-performance-considerations" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>There are some drawbacks to the Decimal Class vs Float class</p>
+<ul class="simple">
+<li><p>Decimals are not easy to code because the construction of decimals can be done via strings or tuples</p></li>
+<li><p>not all the mathematical functions that exist in the math module have a decimal counterpart</p></li>
+<li><p>decimals requires more memory to store. So it has more memory overhead</p></li>
+<li><p>Deimals are much slower than floats (relatively).</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># So lets see how many bytes require to create decimals vs floats</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">3.1456</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;3.1456&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># Here we can see decimal require more to create. We need 104 bits to create a decimal which is 5 times larger than float </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>104
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see how much time it requires to create a decimal and float</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_float</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mf">3.1456</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_decimal</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;3.1456&#39;</span><span class="p">)</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">run_float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Float runtime : &quot;</span><span class="p">,</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">run_decimal</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Float runtime : &quot;</span><span class="p">,</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
+
+
+<span class="c1"># We can see that the runtime of decimals is almost 8 times greater than thr runtime of float</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Float runtime :  0.01874008500000457
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Float runtime :  0.15734281000000294
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see the runtime of the arithmetic operations of the Floats and Decimals</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_float</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mf">3.1456</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">/</span> <span class="n">a</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_decimal</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;3.1456&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">/</span> <span class="n">a</span>
+
+
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10000000</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">run_float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Float runtime : &quot;</span><span class="p">,</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">run_decimal</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decimal runtime : &quot;</span><span class="p">,</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
+
+<span class="c1"># As n increases the time requires to perform arithmetic operations also increases when compared to the floats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Float runtime :  0.38702919099999633
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decimal runtime :  0.9213612019999999
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see the performance of some math functions</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_float</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mf">3.1456</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_decimal</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;3.1456&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
+
+
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">run_float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Float runtime : &quot;</span><span class="p">,</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">run_decimal</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decimal runtime : &quot;</span><span class="p">,</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
+
+<span class="c1"># We can see the comparative difference between the runtime of floats and decimals.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Float runtime :  0.07481775000000113
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decimal runtime :  0.4664380030000004
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>If you need more precise and accurate values for calculation then only you should use decimals, if precision and high accuracy is not mandatory then we can simply use floats because they are easy to create and has better performance relative to floats.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./04_Numerical_Types"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_Rationals.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Rationals</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_Booleans.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Booleans</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#need-of-decimal-module">Need of Decimal Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-module">Decimal Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-constructors-and-contexts">Decimal Constructors and Contexts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-math-operations">Decimal Math Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-performance-considerations">Decimal Performance Considerations</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

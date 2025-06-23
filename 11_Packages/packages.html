@@ -1,0 +1,794 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Packages &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '11_Packages/packages';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Modules" href="../10_Modules.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../01_Intro_to_python.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../01_Intro_to_python.html">
+                    Introduction to Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_Python_Type_Hierarchy.html">Python Type Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Variables_and_Memory.html">Variables and Memory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_Numerical_Types/Numerical_Data_Types.html">Numerical Data Types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_Numerical_Types/01_Integers.html">Integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_Numerical_Types/02_Rationals.html">Rationals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_Numerical_Types/03_Decimals.html">Decimals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_Numerical_Types/04_Booleans.html">Booleans</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_First_Class_Functions/01_Introduction_to_First_Class_Functions.html">First Class Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/02_DocStrings_And_Annotations.html">Docstrings And Function Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/03_Function_Introspection.html">Function Introspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/04_Lambda_Functions.html">Lambda Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/05_Callables.html">Callables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/06_Higher_Order_Functions.html">Higher Order Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/07_Reducing_Functions.html">Reducing Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_First_Class_Functions/08_Partial_Functions.html">Partial Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Scopes.html">Scopes and Namespaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_Modules.html">Modules</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Packages</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F11_Packages/packages.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/11_Packages/packages.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Packages</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#need-of-packages">Need of Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structuring-the-packages">Structuring the Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#namespace-packages">Namespace Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules-from-zip-archives">Importing modules from zip archives</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="packages">
+<h1>Packages<a class="headerlink" href="#packages" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In Python, Packages are specalized modules which can store modules and packages also (Sub Packages). We can simply say packages are module types but they just have extra functionality to store modules and packages under them.</p></li>
+<li><p>Generally modules doesn’t have <code class="docutils literal notranslate"><span class="pre">__path__</span></code> property. If a module as <code class="docutils literal notranslate"><span class="pre">__path__</span></code> property then it is called as packages. This is the difference between the package and module.</p></li>
+<li><p>Packages and Modules in python are not just represented by File Systems. But in 99% of applications these modules and packages are represented as files, so we can say <code class="docutils literal notranslate"><span class="pre">.py</span></code> files are considered as modules and directories are considered as packages. But all directories are not considered as packages. The directories which contian <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file are considered as packages.</p></li>
+<li><p>Packages usually represent a hierarichy of modules/packages. Suppose consider this example.</p></li>
+</ul>
+ <img src="..\_static\packages.png" alt="Package Structure" width="1200" height = "400"/>
+<p>Here we have a package name called pack1 which contains two modules module1a, module1b and has one sub package pack1_1. As we know package is an module object it has a namespace under <code class="docutils literal notranslate"><span class="pre">__dict__</span></code> property of package. So here pack1 can also as a namespace. All the packages and modules under this pack1 are considered as attributes to this package. So <code class="docutils literal notranslate"><span class="pre">pack1.__dict__</span></code> contains all these packages and modules labels with corresponding objects if they gets imported. So to access module1a we actually use dot notation i.e <code class="docutils literal notranslate"><span class="pre">pack1.module1a</span></code>. To access the module1_1a we use this syntax <code class="docutils literal notranslate"><span class="pre">pack1.pack1_1.module1_1a</span></code>. So by using dot notation we can access any packages and modules under particular package becuase they are considerd as attributes to top-level package (like pack1 here).</p>
+<ul>
+<li><p>Suppose if you a statement in top-level program such as <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pack1.pack1_1.module1_1a</span></code>, then python performs these steps first.</p>
+<ol class="arabic simple">
+<li><p>It first performs <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pack1</span></code> and puts it in sys.modules with label as <code class="docutils literal notranslate"><span class="pre">pack1</span></code>. <code class="docutils literal notranslate"><span class="pre">pack1</span></code> reference pack1 package.</p></li>
+<li><p>Then it performs <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pack1.pack1_1</span></code> and puts it in sys.modules with label as <code class="docutils literal notranslate"><span class="pre">pack1.pack1_1</span></code>. <code class="docutils literal notranslate"><span class="pre">pack1.pack1_1</span></code> reference subpackage pack1_1</p></li>
+<li><p>Finally it performs <code class="docutils literal notranslate"><span class="pre">imports</span> <span class="pre">pack1.pack1_1.module1_1a</span></code> and puts it in sys.modules with label as <code class="docutils literal notranslate"><span class="pre">pack1.pack1_1.module1_1a</span></code>. <code class="docutils literal notranslate"><span class="pre">pack1.pack1_1.module1_1a</span></code> references module1_1a.</p></li>
+</ol>
+<p>As we know 3 lables are stored in sys.modules but only <code class="docutils literal notranslate"><span class="pre">pack1</span></code> object gets stored in global namespace because python knows we just need only top-level object and with that top-level object we access internal modules and packages. So we have only <code class="docutils literal notranslate"><span class="pre">pack1</span></code> object in global namespace.</p>
+</li>
+<li><p>As we know most of the packages in python are just directories and we know packages are just modules , modules contain code and these code gets executed when that module gets loaded. So now where we actually write code for packages as they are not files they are just directories. We cannot write code in directories. As we have already know to make a directory as package, we definitely need a file called <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>. This <code class="docutils literal notranslate"><span class="pre">__</span> <span class="pre">init__.py</span></code> tells python that the directory is a package as opposed to standard directory. We actually write code of the package in this <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file. Whenever python imports this package it executes the code present in this <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> and loads that package object (module type object) to sys.modules and globals. And this loaded object of package contains all the varaibles, functions present in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file as attributes. That means what ever the objects present in the namespace of <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file of packages are gets stored in package object(module object).</p></li>
+<li><p>For each package we have 3 main properties. Those are <code class="docutils literal notranslate"><span class="pre">__file__</span></code> , <code class="docutils literal notranslate"><span class="pre">__path__</span></code> and <code class="docutils literal notranslate"><span class="pre">__package__</span></code> .</p>
+<p><code class="docutils literal notranslate"><span class="pre">__file__</span></code> : It tell us the location of module/package code in the file system (which is <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> for package and <code class="docutils literal notranslate"><span class="pre">module.py</span></code> for module)</p>
+<p><code class="docutils literal notranslate"><span class="pre">__package__</span></code> : It is the package name where module is located in. (If that module is package then <code class="docutils literal notranslate"><span class="pre">__package__</span></code> contains package name itself else it will show us the package name where this module is located. If it is top-level module then it will show empty string)</p>
+<p><code class="docutils literal notranslate"><span class="pre">__path__</span></code> : It is the location of package in file system. (Modules doesn’t have this property.)</p>
+<p>For example consider the above package structure :</p>
+<p><code class="docutils literal notranslate"><span class="pre">module1a.__file__</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/app/pack1/module1a.py</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">pack1_1.__file__</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/app/pack1/pack1_1/__init__.py</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">module1_1a.__package__</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">pack1.pack1_1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">pack1_1.__path__</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/app/pack1/pack1_1</span></code></p>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see how sub packages and modules inside the packages gets imported.</span>
+
+<span class="c1"># Now iam just importing the pack1 only and see whether internal packages and modules gets loaded or not</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pack1</span>
+
+<span class="s1">&#39;pack1&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running pack1...
+Running pack1_1 ....
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can see pack1 gets loaded into sys modules nad its init code executed.</span>
+
+<span class="c1"># Now lets see the internal modules and packages are loaded or not.</span>
+
+<span class="c1"># If they gets loaded then they must be in pack1.__dict__ </span>
+
+<span class="s1">&#39;module1a&#39;</span> <span class="ow">in</span> <span class="n">pack1</span><span class="o">.</span><span class="vm">__dict__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># From the output we can say when we run the import pack1, python actually lloks for pack1 in current directory and create its object using its</span>
+<span class="c1"># init code and just kept that object in sys.modules. It doesn&#39;t loaded internal modules and packages in it.</span>
+ 
+<span class="c1"># Now lets load the internal modules of pack1</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pack1.module1a</span>
+
+<span class="c1"># Now lets see module1a is in pack1.__dict__</span>
+
+<span class="s1">&#39;module1a&#39;</span> <span class="ow">in</span> <span class="n">pack1</span><span class="o">.</span><span class="vm">__dict__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Module1a ....
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># So module1a got imported </span>
+
+<span class="c1"># But module1a label is not in globals</span>
+
+<span class="s1">&#39;module1a&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is because python loads the module1a in sys.module as pack1.module1a along with reference and just add attach that reference and label </span>
+<span class="c1"># to pack1 module (as an attribute). So now we can use pack1 to access that module1a</span>
+
+<span class="c1"># Lets check module1a is in sys.modules</span>
+
+<span class="s1">&#39;module1a&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Label module1a is not in sys.modules becuase it is staored as pack1.module1a</span>
+
+<span class="s1">&#39;pack1.module1a&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To keep module1a label in globals, we need to import module1a like this</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pack1</span><span class="w"> </span><span class="kn">import</span> <span class="n">module1a</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets check module1a is in globals or not</span>
+
+<span class="s1">&#39;module1a&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets check whether it is in sys.modules or not</span>
+
+<span class="s1">&#39;module1a&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
+
+<span class="c1"># Label module1a never exist in sys.modules even though you imported it differently. If you import module1a like this, python first imports </span>
+<span class="c1"># pack1 and then it imports module1a and label it as pack1.module1a and returns the module1a object as module1a. Since we are returning that</span>
+<span class="c1"># object as module1a, so this label gets stored in globals</span>
+
+<span class="c1"># Like this we import internal modules and packages also</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pack1.pack1_1.module1_1a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Running Module1_1a ....
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;module1_1a&#39;</span> <span class="ow">in</span> <span class="n">pack1</span><span class="o">.</span><span class="n">pack1_1</span><span class="o">.</span><span class="vm">__dict__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note</strong> : This file contain the sample code for implemention of packages -&gt; <a class="reference download internal" download="" href="../_downloads/f39169765b32ddb154d6df55a437c7c1/Packages_Implementation_Demo_Code.zip"><span class="xref download myst">Package_Implementation_code</span></a></p>
+</section>
+<section id="need-of-packages">
+<h2>Need of Packages<a class="headerlink" href="#need-of-packages" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>By using packages, we can simply break the code up into smaller chunks which makes our code:</p>
+<ol class="arabic simple">
+<li><p>Easier to write</p></li>
+<li><p>Easier to test and debug</p></li>
+<li><p>Easier to read and understand</p></li>
+<li><p>Easier to document</p></li>
+</ol>
+</li>
+<li><p>But all the code which we broken up into chunks can be stitched together by hiding the inner implementation from users and this helps users to write their code , test and debug easily.</p></li>
+</ul>
+</section>
+<section id="structuring-the-packages">
+<h2>Structuring the Packages<a class="headerlink" href="#structuring-the-packages" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Generally, we have sub packages inside a main package. Whenever we are performing the imports, we usually use <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">&lt;mainpackage&gt;.&lt;subpackage1&gt;.&lt;subpackage1_1&gt;</span></code>. But when we are performing these we acutally giving each detail of how our package is structured and also it is tedious for the users to perform these many dot operators if they want to import a particular attribute or function from a subpackage1_1.</p></li>
+<li><p>So instead of doing these dot operations for import, what we actually do is relative imports. Relative imports simply means we actually need to import sub packages and modules in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file of that paticular package. We gnerally do <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">subpackage1_1</span> <span class="pre">import</span> <span class="pre">*</span></code> in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file of subpackage1 (additionally we also import all attributs and methods present in modules of subpackage1 i.e <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module1</span> <span class="pre">import</span> <span class="pre">*</span></code>).</p></li>
+<li><p>Suppose if you are importing a module which is one level up, what means it is present in just outside of this directory (i.e module and this directory are in same directory). So import that module we use these syntax <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">..module1</span> <span class="pre">import</span> <span class="pre">*</span></code> (Here .. means go 1 level up from current directory, . means current directory, … means 2 levels up of current directory).</p></li>
+<li><p>Generally we don’t perform <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code> . Because we know these might replaces all common labels with newer objects. And some people only want to import fewer methods and attributes of that module when we performed <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code>. To import whatever methods and attributes that we need to import we use a special attribute called <code class="docutils literal notranslate"><span class="pre">__all__</span></code> which is list. Whatever this list contains those attributes and methods gets imported when we have imported that module. Suppose a module contains boolean(), boolean_helper_1(), boolean_helper_2() methods. If you want to just import boolen() method when you performed <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></code> then you have write this statement in your module i.e <code class="docutils literal notranslate"><span class="pre">__all__</span> <span class="pre">=</span> <span class="pre">['boolean']</span></code>. This <code class="docutils literal notranslate"><span class="pre">__all__</span></code> is applicable when perform <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code> only</p></li>
+</ul>
+<p><strong>Note</strong> : When you perform <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">&lt;package1&gt;.&lt;subpackage1&gt;</span> <span class="pre">as</span> <span class="pre">subpackage</span></code>, then python import packackage1 and package1.subpackage1 into sys.modules and then it places object of package1.subpackage1 in global namespace with label as subpackage.</p>
+</section>
+<section id="namespace-packages">
+<h2>Namespace Packages<a class="headerlink" href="#namespace-packages" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Namespace packages are also called as implicit packages which are package like directories which may contain modules, nested regular packages, nested namespace packages but they cannot contain the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>. If python see any directory that doesn’t <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file but has modules init can be implicitly made into special type of packages. We can simply say that if a directory doesn’t contain <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> package then it is considered as Namespace packages.</p></li>
+<li><p>The main difference between regular and namespace packages are :</p>
+<img src="..\_static\namespace_packages1.png" alt="Namespace Packages" width="1200" height = "400"/>
+</li>
+<li><p>Example for namespace package is :</p>
+<img src="..\_static\namespace_packages2.png" alt="Example of Namespace Packages" width="1200" height = "400">
+</li>
+<li><p>We usually import the namespace space packages same as regular packages. Such as in above example if you want to import <code class="docutils literal notranslate"><span class="pre">boolean.py</span></code> present in <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> package we usually do this <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">utils.validators</span> <span class="pre">import</span> <span class="pre">boolean</span></code>. Similary we can import modules or sub packages present in namespace packages.</p></li>
+</ul>
+</section>
+<section id="importing-modules-from-zip-archives">
+<h2>Importing modules from zip archives<a class="headerlink" href="#importing-modules-from-zip-archives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Suppose your packages are zipped and you wanna import it. For example we have a common package which is zipped into <code class="docutils literal notranslate"><span class="pre">common.zip</span></code> and now we wanna import modules in it from <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file. If we write the normal import like <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">common</span></code> or <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">common.zip</span></code> , it wouldn’t work. Because the path of zip file is not present in the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>. But we might think that the cirrent directory path is already in the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> then why python cannot able to look into zip files.</p></li>
+<li><p>The main reason is ,Python’s import system uses “finders” (like FileFinder, ZipImporter, etc.) that look at each entry in <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>. If a path is a directory, it checks for <code class="docutils literal notranslate"><span class="pre">.py</span></code> files and packages. If it’s a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file, it uses a zipimporter, which can read <code class="docutils literal notranslate"><span class="pre">.py/.pyc</span></code> files inside the ZIP as if they were regular modules — but only if the ZIP is directly in sys.path.</p></li>
+<li><p>So, Even if your current working directory (e.g., .) is in sys.path, Python does not automatically look inside ZIP files in that directory. Python will only consider a ZIP file as an importable source if the ZIP file itself is explicitly added to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>.</p></li>
+<li><p>So if we want to import the packages and modules present in zip files then just add the path of the zip file to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> (just as <code class="docutils literal notranslate"><span class="pre">sys.path.append(&lt;path&gt;)</span></code>) and import the modules and packages present in it. (just add this syntax at the top of the main module before importing them <code class="docutils literal notranslate"><span class="pre">sys.path.append(&lt;path&gt;)</span></code> )</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./11_Packages"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../10_Modules.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modules</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#need-of-packages">Need of Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structuring-the-packages">Structuring the Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#namespace-packages">Namespace Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules-from-zip-archives">Importing modules from zip archives</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

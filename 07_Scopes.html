@@ -1,0 +1,1150 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Scopes and Namespaces &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07_Scopes';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Closures" href="08_Closures.html" />
+    <link rel="prev" title="Partial Functions" href="06_First_Class_Functions/08_Partial_Functions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="01_Intro_to_python.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="01_Intro_to_python.html">
+                    Introduction to Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="02_Python_Type_Hierarchy.html">Python Type Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Variables_and_Memory.html">Variables and Memory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="04_Numerical_Types/Numerical_Data_Types.html">Numerical Data Types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_Numerical_Types/01_Integers.html">Integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_Numerical_Types/02_Rationals.html">Rationals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_Numerical_Types/03_Decimals.html">Decimals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_Numerical_Types/04_Booleans.html">Booleans</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="06_First_Class_Functions/01_Introduction_to_First_Class_Functions.html">First Class Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/02_DocStrings_And_Annotations.html">Docstrings And Function Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/03_Function_Introspection.html">Function Introspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/04_Lambda_Functions.html">Lambda Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/05_Callables.html">Callables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/06_Higher_Order_Functions.html">Higher Order Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/07_Reducing_Functions.html">Reducing Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_First_Class_Functions/08_Partial_Functions.html">Partial Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Scopes and Namespaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Packages/packages.html">Packages</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F07_Scopes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/07_Scopes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Scopes and Namespaces</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intoduction">Intoduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-scope">Global Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-scope">Built-in Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-scope">Local Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-local-scopes">Non Local Scopes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="scopes-and-namespaces">
+<h1>Scopes and Namespaces<a class="headerlink" href="#scopes-and-namespaces" title="Link to this heading">#</a></h1>
+<section id="intoduction">
+<h2>Intoduction<a class="headerlink" href="#intoduction" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>When an object is assigned to a variable (<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">10</span></code>) then that variable points or references to that object and we say that variable is bound to that object. That object can be accessed using that name in various parts of the code but not everywhere.</p></li>
+<li><p>This variable name and its binding (name and object) exists in specific parts of our code. he portion of code where name and its binding is defined as lexical scope of the variable and these binidings are stored in namespaces.</p></li>
+<li><p>Generally, namespace is a system that ensures all the objects have unique names. It is just mapping of names to objects. Think of it as an dictionary where keys are name and respective values are objects. Namespace prevent naming collisions by ensuring different parts of the program can use same name without causing confusion.</p></li>
+<li><p>Whereas Scope refers to the region of code where particular namespace is directly accessible. So each scope contains a namespace which determines what variables that can be accessed in this scope. Whenever you made an assignment or defined a function then those assigned variables or defined functions gets stored in that namespace along with their objects.</p></li>
+<li><p>There are actually different types of scopes in python. Those are Global Scope, Local Scope and Built-in Scope.</p></li>
+</ul>
+</section>
+<section id="global-scope">
+<h2>Global Scope<a class="headerlink" href="#global-scope" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The global scope is essentially a module scope which means it spans single python file only. Whenever you create a .py or .ipynb file a global scope gets created and all the variables and functions defined in this file are stored in namespace of this scope which is called global namespace.</p></li>
+<li><p>The variables defined in global scope of particular file cannot be accessed in another module or file because that file has another namespace which is capable os storing variables and functions defined in that scope only.</p></li>
+<li><p>So in general we can access only those variables or functions that are present in the namespace of that particular scope.</p></li>
+</ul>
+</section>
+<section id="built-in-scope">
+<h2>Built-in Scope<a class="headerlink" href="#built-in-scope" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Built-in Scope is the top-level scope in python in which all the built-in objects are stored. The namespace present in built-in scope is called built-in namespace. In these namespace all the built-in objects such as <code class="docutils literal notranslate"><span class="pre">print</span></code>, <code class="docutils literal notranslate"><span class="pre">True</span></code>,<code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code> etc, gets stored.</p></li>
+<li><p>Suppose you have created a python file which is <a class="reference external" href="http://moduel1.py">moduel1.py</a> and in that file, you have written the following code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Now when the file is compiled a global namespace gets created in this file which contains a variable a referencing the integer object 10. When python starts executing the file then it first encounters object or function called <code class="docutils literal notranslate"><span class="pre">print</span></code>. So it first searches in the global namespace whether <code class="docutils literal notranslate"><span class="pre">print</span></code> is defined in global namespace or not. Since we haven’t defined it in global namespace then it moves to next level scope which is on top of global scope. Here it is <code class="docutils literal notranslate"><span class="pre">built-in</span> <span class="pre">scope</span></code>. Since <code class="docutils literal notranslate"><span class="pre">print</span></code> already defined in <code class="docutils literal notranslate"><span class="pre">built-in</span> <span class="pre">scope</span></code>, so it runs that functionality. Next it encounters <code class="docutils literal notranslate"><span class="pre">a</span></code>. So it first checks whether <code class="docutils literal notranslate"><span class="pre">a</span></code> is defined in global scope or not. Since <code class="docutils literal notranslate"><span class="pre">a</span></code> is defined in global scope it extracts that object from namespace and prints the value of a. This is how that single statement gets executed. Similary <code class="docutils literal notranslate"><span class="pre">print(True)</span></code> gets executed (Here both objects are defined in builtin scope itself).</p>
+</li>
+</ul>
+</section>
+<section id="local-scope">
+<h2>Local Scope<a class="headerlink" href="#local-scope" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>When we create functions, we create variable names inside those functions (using assignments or as parameters etc.). Variables defined inside the function are not created until the function is called. Everytime the function is called a new scope gets created which is called Functional Scope or Local Scope and variables defined inside that function are assigned to that scope.</p>
+<p><strong>Ex</strong> : Consider the following function</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+
+  <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+  <span class="k">return</span> <span class="n">c</span>
+
+</pre></div>
+</div>
+<p>When the function gets compiled , first that function name <code class="docutils literal notranslate"><span class="pre">my_func</span></code> gets stored in namespace where function is written. Here my_func gets stored in global namespace. And during compilation pyton searches for any assignments inside the function. Here we can see variable <code class="docutils literal notranslate"><span class="pre">c</span></code> assigned to <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></code>. So python considers <code class="docutils literal notranslate"><span class="pre">c</span></code> as local variable and stores it in local namespace which is located in local scope. Since <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are parameters they are automatically considered as local variables.</p>
+<p>Whenever function gets called then new local scope gets created and all those local variables reside in the local namespace itself. And whenever function completes its execution this local  scope gets deleted, because variables migth not bound to same object at each function call as values of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> gets changed at each call.</p>
+</li>
+<li><p>Whenever you are retrieving the  value of a variable from inside a function, python automatically searches the local scope’s namespace and up the chain of enclosing all the namespaces. i.e <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">scope</span> <span class="pre">-&gt;</span> <span class="pre">global</span> <span class="pre">scope</span> <span class="pre">-&gt;</span> <span class="pre">built-in</span> <span class="pre">scope</span></code></p></li>
+<li><p>Suppose you are modifying a global variable inside a function then what generally happens :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">():</span>
+
+  <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">my_func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Whenever python starts compiling, it first creates variable <code class="docutils literal notranslate"><span class="pre">a</span></code> in global scope and then defines <code class="docutils literal notranslate"><span class="pre">my_func</span></code> in global scope itself. During this compilation, python seaches any variables are assigned in this function, if so then it makes a local variable. Here we have variable <code class="docutils literal notranslate"><span class="pre">a</span></code> insode my_func so python considers this variable as local variable and its local to my_func. When python starts executing the function my_func() a local scope gets created and variable <code class="docutils literal notranslate"><span class="pre">a</span></code> resides in it. Now we are printing <code class="docutils literal notranslate"><span class="pre">a</span></code>, so python first looks <code class="docutils literal notranslate"><span class="pre">a</span></code> in local namespace. Since <code class="docutils literal notranslate"><span class="pre">a</span></code> is already present in local namespace so we get result as 100. Now execution of my_func ended. So that local scope gets deleted. Now when python encounters <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> in the module then python searches for <code class="docutils literal notranslate"><span class="pre">a</span></code> in module scope which is global scope. Since <code class="docutils literal notranslate"><span class="pre">a</span></code> is 10 in global scope, we get 10 as result.</p>
+</li>
+<li><p>If you want to modify a global variable inside a function then we need to use <code class="docutils literal notranslate"><span class="pre">global</span></code> keyword before modifying a variable. If you use this global keyword then python won’t consider that variable as local during compile time and create that variable in global scope if that variable is not present.</p>
+<p><strong>Ex</strong> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">():</span>
+
+  <span class="k">global</span> <span class="n">a</span>
+
+  <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">my_func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Here we have declared <code class="docutils literal notranslate"><span class="pre">a</span></code> as global variable inside the function. So <code class="docutils literal notranslate"><span class="pre">a</span></code> is not present in local scope of that function. So whenever you are accessing that variable inside the function, python moves to next level of scope which is global scope to get the value of <code class="docutils literal notranslate"><span class="pre">a</span></code>. So here we get 100 as output in both the cases.</p>
+</li>
+<li><p>So when python encounters a function definition in comiple time, it will scan any lables(variables) that have values assigned to them (anywhere in the function), if the lables are not specified as global, then it will be local. Variables which are referenced but not assigned a value anywhere in the function will not be local , and python look for them in enclosing scopes at run-time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets look scopes in practice.</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">my_func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># Here you can see first 100 is printed and then 10. Becuase in first print statement a is local to my_func and in second print a is global</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
+10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">my_func</span><span class="p">()</span>
+
+<span class="c1"># Here you can see 10 gets printed. Because a is not local to function we have defined a inside the function to make it local. We just referenced it</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">a</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">my_func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># Here we are making a as global before assignment so a gets changed to 100 in global namespace as it is not present in locla namespace</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
+100
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see what happen if we make it global after assignment.</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">():</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="k">global</span> <span class="n">a</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">my_func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># Here we gets syntax error because when python encounters the assigment first it treats a as local variable but when it encounters global statement then it become a conflict and it trows a syntax error.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+    <span class="k">global</span> <span class="n">a</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: name &#39;a&#39; is assigned to before global declaration
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Similarly we have same error when you referenced the global variable first and make assignment inside the function</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">my_func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># Here also, python makes a as local variable during compile time since we have an assignment there for a. When function starts executing we are accessing a before assignment. </span>
+<span class="c1"># So python throws a is undefined error because print statement won&#39;t gets executed at compile time.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">my_func</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># Here also, python makes a as local variable during compile time since we have an assignment there for a. When function starts executing we are accessing a before assignment. </span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># So python throws a is undefined error because print statement won&#39;t gets executed at compile time.</span>
+
+<span class="nn">Cell In[5], line 6,</span> in <span class="ni">my_func</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">():</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="ne">UnboundLocalError</span>: local variable &#39;a&#39; referenced before assignment
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># As we know global keyword create the variable eventhough the variable doesn&#39;t exist globally</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">b</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">my_func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
+100
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note</strong> : When you declare a variable as global inside a function or local scope then that value not actually gets stored in local namespace. Python actually creates that variable in the global scope ans stores it in global namespace. This is the reason why we can able to access that variable from anywhere because python moves to enclosing scopes if it can’t find that variable in current scope.</p>
+</section>
+<section id="non-local-scopes">
+<h2>Non Local Scopes<a class="headerlink" href="#non-local-scopes" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Generally we can define functions inside another function. Both these functions can access the global and built-in scopes. But the function which is defined inside another function can able access its enclosing local scope which is outer function scope. This outer function scope is called as Non Local Scope.</p>
+<p><strong>Ex</strong> :</p>
+<p>Consider the following code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span><span class="w"> </span><span class="nf">outer_func</span><span class="p">():</span>
+
+  <span class="c1"># Some Code</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">inner_func</span><span class="p">():</span>
+
+      <span class="c1"># Some Code</span>
+
+  <span class="n">inner_func</span><span class="p">()</span>
+
+<span class="n">outer_func</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>In this scenario, we have 4 scopes. One is scope of inner_func(), another one outer_func() scope and other two are global and built-in scopes.
+Here inner_func() can able to access the its own scope, and its enclosing scopes such as outer_func() scope , global and built-in scopes. So the scopes which are in between inner_func() and global scopes are called as Non-Local Scopes. Here outer_func() scope is Non-local Scope.</p>
+<p>So movement of lookup for variables or objects is <code class="docutils literal notranslate"><span class="pre">inner_func()</span> <span class="pre">-&gt;</span> <span class="pre">outer_func()</span> <span class="pre">-&gt;</span> <span class="pre">global</span> <span class="pre">-&gt;</span> <span class="pre">built-in</span></code></p>
+</li>
+<li><p>Now consider te following code :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span><span class="w"> </span><span class="nf">outer_func</span><span class="p">():</span>
+
+  <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">inner_func</span><span class="p">():</span>
+
+      <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+  <span class="n">inner_func</span><span class="p">()</span>
+
+<span class="n">outer_func</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>Here a is not local to inner_func(), since it is not present in the namespace of inner_func, python move to its enclosing scope which is outer_scope. Since a is present there, ineer_func() prints the value of a which is 10. If a is present in global scope also, python won’t consider that value of a, it actually takes the value of a from the closest enclosing scope only.</p>
+</li>
+<li><p>Suppose you wanna modify the global variables inside the nested functions then you can do that with <code class="docutils literal notranslate"><span class="pre">global</span></code> keyword. For example, consider the following code :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer_func</span><span class="p">():</span>
+
+  <span class="k">global</span> <span class="n">a</span> 
+
+  <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">inner_func</span><span class="p">():</span>
+
+      <span class="k">global</span> <span class="n">a</span> 
+
+      <span class="n">a</span> <span class="o">=</span> <span class="mi">30</span>
+
+      <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+  <span class="n">inner_func</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">outer_func</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>In this code first we get a value as 10. When the outer_func() gets called, here we actually changing the value of a to 20, so now a = 20 which gets printed to console. When inner_func() gets called a gets changed again to 30 and 30 is printed to console. SO globally a = 30 now.</p>
+</li>
+<li><p>In some case we actually wanna modify the variables present in the non-local scopes. To do this we actually use the keywoed called <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code>. Whenever python is told that the variable is nonlocal, it will look for it in the enclosing local scopes chain until it first encounters the specified variable name. Beware it will look in local scopes, it will not look in global scopes. Suppose if we have two nonlocal scopes enclosing the local scope and those two nonlocal scopes have same variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in their namespaces and now you declared <code class="docutils literal notranslate"><span class="pre">x</span></code> as nolocal in the local scope then it would just points to first (or closet) nonlocal scope that contains variable x.</p>
+<p><strong>Ex</strong> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span><span class="w"> </span><span class="nf">outer_func</span><span class="p">():</span>
+
+  <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">inner_func1</span><span class="p">():</span>
+
+      <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">inner_func2</span><span class="p">():</span>
+
+          <span class="k">nonlocal</span> <span class="n">x</span>
+
+          <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;world&#39;</span>
+
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Before inner_2&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+      <span class="n">inner_func</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After inner_2&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+  
+  <span class="n">inner_func1</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+ <span class="n">outer_func</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>Here if you see there are two nested functions inside outer and all three functions as variable x. Whenever python encounters the statment <code class="docutils literal notranslate"><span class="pre">nonlocal</span> <span class="pre">x</span></code>, it starts looking for x in its enclosing nonlocal scope. Here we have two enclosing nonlocal scopes those are <code class="docutils literal notranslate"><span class="pre">inner_func1()</span></code> and <code class="docutils literal notranslate"><span class="pre">outer_func()</span></code>. So first python looks for x in its closet enclosing scope which is <code class="docutils literal notranslate"><span class="pre">inner_func1()</span></code>. Since x is present in <code class="docutils literal notranslate"><span class="pre">inner_func1()</span></code>, so python stops for lookup for x. Now lets see what we get in console when each print statement gets executed. So as we know from first print statement, we get  <code class="docutils literal notranslate"><span class="pre">hello</span></code> as output. Now inner_func2() gets executed it actually changing the value of x presnt in inner_func1() not outer(). So we gets <code class="docutils literal notranslate"><span class="pre">world</span></code> as output. Since inner function doesn’t change the value of x which is in outer function , now we get <code class="docutils literal notranslate"><span class="pre">python</span></code> as output.</p>
+<p>This is how we modify the nonlocal variables using <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code> keyword.</p>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see nonlocal scopes in practice</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">inner</span><span class="p">()</span>
+
+<span class="n">outer</span><span class="p">()</span>
+
+<span class="c1"># It displays how we can access the nonlocal variables from local scopes iteslf.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>python
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets access the global variables from nonlocal scopes and local scopes</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="n">inner</span><span class="p">()</span>
+<span class="n">outer</span><span class="p">()</span>
+
+<span class="c1"># Here we can see both nonlocal and local scopes can able to access the global variables.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets see what happens if global and non-local scope contains the same variable and what value the local scope will access if we reference te same variable in local scope.</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    
+    <span class="n">inner</span><span class="p">()</span>
+<span class="n">outer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># From the output we can say that if that variable is not defined in current scope then python looks for that variable in first enclosing scope </span>
+<span class="c1"># if it finds there then it automatically retrievs that value and it can&#39;t even lookup in further enclosing scopes even though same variable is defined there.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+20
+10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets modify the global variable in local and nonlocal scopes</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+
+    <span class="k">global</span> <span class="n">a</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+
+        <span class="k">global</span> <span class="n">a</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">30</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Before inner&#39;</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">inner</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After inner&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Before Outer&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">outer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before Outer 10
+Before inner 20
+After inner 30
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets modify the nonlocal variables</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner1</span><span class="p">():</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">inner2</span><span class="p">():</span>
+            <span class="k">nonlocal</span> <span class="n">x</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+        <span class="n">inner2</span><span class="p">()</span>
+    <span class="n">inner1</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">outer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>python
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now consider one more example for modifying the nonlocal variables</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner1</span><span class="p">():</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">inner2</span><span class="p">():</span>
+            <span class="k">nonlocal</span> <span class="n">x</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;world&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Before inner2 :&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">inner2</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After inner2 :&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    
+    <span class="n">inner1</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;outer :&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">outer</span><span class="p">()</span>
+
+<span class="c1"># Here x in outer not changed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before inner2 : python
+After inner2 : world
+outer : hello
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner1</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">x</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">inner2</span><span class="p">():</span>
+            <span class="k">nonlocal</span> <span class="n">x</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;world&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Before inner2 :&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">inner2</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After inner2 :&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    
+    <span class="n">inner1</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;outer :&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">outer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before inner2 : python
+After inner2 : world
+outer : world
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets mix changing the local and global scopes</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner1</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">x</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">inner2</span><span class="p">():</span>
+            <span class="k">global</span> <span class="n">x</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;world&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Before inner2 :&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">inner2</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After inner2 :&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    
+    <span class="n">inner1</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;outer :&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">outer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;global :&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before inner2 : python
+After inner2 : python
+outer : python
+global : world
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note</strong> : If you use <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code> and <code class="docutils literal notranslate"><span class="pre">global</span></code> keywords in any scope they are telling python that don’t consider these variables are local variables. If it is <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code> then check in which scope you are changing the nonlocal variable.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="06_First_Class_Functions/08_Partial_Functions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Partial Functions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="08_Closures.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Closures</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intoduction">Intoduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-scope">Global Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-scope">Built-in Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-scope">Local Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-local-scopes">Non Local Scopes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
